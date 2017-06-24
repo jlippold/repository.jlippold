@@ -1,5 +1,11 @@
-Add on for Kodi to view doorbell recordings saved on ring.com
+Ring Video Doorbell
+=========
 
+Add on for Kodi to view doorbell recordings saved on ring.com. 
+
+**Requires a ring.com subscription**
+
+- Supports playback of recorded events from ring.com for doorbell, floodlight and stickup cams.
 
 Credits
 ===========
