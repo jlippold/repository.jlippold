@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.Jlippold" name="Jlippold Repository" version="1.0.0" provider-name="Jlippold">
+	<extension point="xbmc.addon.repository" name="Jlippold Addon Repository">
+		<info compressed="false">https://github.com/jlippold/repository.jlippold/raw/master/addons.xml</info>
+		<checksum>https://github.com/jlippold/repository.jlippold/raw/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://github.com/jlippold/repository.jlippold/raw/master/zips</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Jeds Addon Repository</summary>
+		<description>Misc kodi stuff I built</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
