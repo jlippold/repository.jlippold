@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
-    <category label="Configuration">
-        <setting label="Email" type="text" id="email" default=""/>
-        <setting label="Password" type="text" id="password" option="hidden"  default=""/>
-        <setting label="Video Limit" type="slider" id="items" subsetting="true" default="50" range="5,5,100" option="int" />
+    <category label="30000">
+        <setting label="30001" type="text" id="email" default=""/>
+        <setting label="30002" type="text" id="password" option="hidden"  default=""/>
+        <setting label="30003" type="slider" id="items" subsetting="true" default="50" range="5,5,100" option="int" />
     </category>
 </settings>

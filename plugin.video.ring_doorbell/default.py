@@ -18,31 +18,31 @@ from dateutil import tz
 base_url = sys.argv[0]
 addon_handle = int(sys.argv[1])
 args = urlparse.parse_qs(sys.argv[2][1:])
+ADDON = xbmcaddon.Addon(id='plugin.video.ring_doorbell')
 
 xbmcplugin.setContent(addon_handle, 'movies')
-
 mode = args.get('mode', None)
 
 def init():
 
-    ADDON = xbmcaddon.Addon(id='plugin.video.ring_doorbell')
+    
     email = ADDON.getSetting('email')
     password = ADDON.getSetting('password')
     items = ADDON.getSetting('items')
-
+    
     if len(email) <= 7: 
-        return showModal('Invalid email address, check addon settings')
+        return showModal(ADDON.getLocalizedString(30200))
     if not re.match(r'[\w.-]+@[\w.-]+.\w+', email):
-        return showModal('Invalid email address, check addon settings')
+        return showModal(ADDON.getLocalizedString(30200))
     if len(password) <= 3:
-        return showModal('Invalid ring password, check addon settings')
+        return showModal(ADDON.getLocalizedString(30201))
     if items.isdigit() == False:
-        return showModal('Invalid item count, check addon settings')
+        return showModal(ADDON.getLocalizedString(30202))
     
     try:
         myring = Ring(email, password)
     except:
-        return showModal('Authentication Error: Check your ring.com credentials')
+        return showModal(ADDON.getLocalizedString(30203))
 
     if mode is None:
         events = []
@@ -67,7 +67,7 @@ def init():
                         url = doorbell.recording_url(video_id)
                         play_video(url)
                     except:
-                        return showModal('Error playing video, it is possible that the video was not found on Ring.com')
+                        return showModal(ADDON.getLocalizedString(30204))
 
 def play_video(path):
     if xbmc.Player().isPlaying():
@@ -86,15 +86,21 @@ def format_event(device, event):
     from_zone = tz.tzutc()
     to_zone = tz.tzlocal()
     utc = event['created_at'].replace(tzinfo=from_zone)
-    local = utc.astimezone(to_zone)
-    formatted = local.strftime('%I:%M %p on %A %b %d %Y')
+    local_time = utc.astimezone(to_zone)
+
+    local_time_string = local_time.strftime('%I:%M %p ') 
+    local_time_string += ADDON.getLocalizedString(30300) 
+    local_time_string += local_time.strftime(' %A %b %d %Y')
+
+    event_name = ''
     if event['kind'] == 'on_demand':
-        formatted = device.name + " Live View at %s" % formatted
+        event_name = ADDON.getLocalizedString(30301)
     if event['kind'] == 'motion':
-        formatted = device.name + " Motion at %s" % formatted
+        event_name = ADDON.getLocalizedString(30302)
     if event['kind'] == 'ding':
-        formatted = device.name + " Ring at %s" % formatted
-    return formatted
+        event_name = ADDON.getLocalizedString(30303)
+
+    return ' '.join([device.name, event_name, local_time_string])
 
 def showModal(text):
     __addon__ = xbmcaddon.Addon()
