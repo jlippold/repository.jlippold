@@ -1,3 +1,7 @@
 1.0.0
 
+Changes for main kodi repo
+
+1.0.0
+
 First commit. Supports doorbell and stick up cam recordings.
