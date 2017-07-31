@@ -11,5 +11,5 @@ zip -r zips/repository.jlippold/repository.jlippold-1.0.0.zip repository.jlippol
 
 # addon
 rm zips/plugin.video.ring_doorbell/*.zip
-zip -r zips/plugin.video.ring_doorbell/plugin.video.ring_doorbell-1.0.1.zip plugin.video.ring_doorbell/
+zip -r zips/plugin.video.ring_doorbell/plugin.video.ring_doorbell-1.0.2.zip plugin.video.ring_doorbell/
 
